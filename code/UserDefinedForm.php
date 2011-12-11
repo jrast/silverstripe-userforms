@@ -671,9 +671,11 @@ JS
 		if(!$this->DisableSaveSubmissions) $submittedForm->write();
 		
 		$values = array();
-        $attachments = array();
+                $attachments = array();
 
 		$submittedFields = new DataObjectSet();
+
+                $emailRecipients = new DataObjectSet();
 		
 		foreach($this->Fields() as $field) {
 			
@@ -683,6 +685,10 @@ JS
 			$submittedField->ParentID = $submittedForm->ID;
 			$submittedField->Name = $field->Name;
 			$submittedField->Title = $field->getField('Title');
+
+                        if(in_array("EditableRecipientsDropdownField", $field->getClassAncestry()) && $recipient = $field->getRecipientFromData($data)) {
+                            $emailRecipients->push($recipient);
+                        }
 			
 			// save the value from the data
 			if($field->hasMethod('getValueFromData')) {
@@ -725,7 +731,7 @@ JS
 		);
 
 		// email users on submit.
-		if($this->EmailRecipients()) {
+		if($emailRecipients) {
 			
 			$email = new UserDefinedForm_SubmittedFormEmail($submittedFields);                     
 			$email->populateTemplate($emailData);
@@ -738,7 +744,7 @@ JS
 				}
 			}
 
-			foreach($this->EmailRecipients() as $recipient) {
+			foreach($emailRecipients as $recipient) {
 				$email->populateTemplate($recipient);
 				$email->populateTemplate($emailData);
 				$email->setFrom($recipient->EmailFrom);

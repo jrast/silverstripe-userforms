@@ -36,4 +36,8 @@ class EditableMemberListField extends EditableFormField {
 		
 		return false;
 	}
+
+        function getIcon() {
+            return '/userforms/images/editabledropdown.png';
+        }
 }
