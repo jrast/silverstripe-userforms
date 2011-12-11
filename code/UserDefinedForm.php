@@ -86,6 +86,7 @@ class UserDefinedForm extends Page {
 	    	'EmailRecipients',
 	    	'UserDefinedForm_EmailRecipient',
 	    	array(
+                                'RecipientName'=> _t('UserDefinedForm.RECIPIENTNAME', 'Recipient Name'),
 				'EmailAddress' => _t('UserDefinedForm.EMAILADDRESS', 'Email'),
 				'EmailSubject' => _t('UserDefinedForm.EMAILSUBJECT', 'Subject'),
 				'EmailFrom' => _t('UserDefinedForm.EMAILFROM', 'From')
@@ -731,6 +732,9 @@ JS
 		);
 
 		// email users on submit.
+                if($emailRecipients->Count() == 0) {
+                    $emailRecipients->merge($this->EmailRecipients());
+                }
 		if($emailRecipients) {
 			
 			$email = new UserDefinedForm_SubmittedFormEmail($submittedFields);                     
@@ -821,6 +825,7 @@ JS
 class UserDefinedForm_EmailRecipient extends DataObject {
 	
 	static $db = array(
+                'RecipientName'=> 'Varchar(200)',
 		'EmailAddress' => 'Varchar(200)',
 		'EmailSubject' => 'Varchar(200)',
 		'EmailFrom' => 'Varchar(200)',
@@ -844,6 +849,7 @@ class UserDefinedForm_EmailRecipient extends DataObject {
 		$fields = new FieldSet(
 			new TextField('EmailSubject', _t('UserDefinedForm.EMAILSUBJECT', 'Email Subject')),
 			new TextField('EmailFrom', _t('UserDefinedForm.FROMADDRESS','Send Email From')),
+                        new TextField('RecipientName', _t('UserDefinedForm.RECIPIENTNAME', 'Recipient Name')),
 			new TextField('EmailAddress', _t('UserDefinedForm.SENDEMAILTO','Send Email To')),
 			new CheckboxField('HideFormData', _t('UserDefinedForm.HIDEFORMDATA', 'Hide Form Data from Email')),
 			new CheckboxField('SendPlain', _t('UserDefinedForm.SENDPLAIN', 'Send Email as Plain Text (HTML will be stripped)')),

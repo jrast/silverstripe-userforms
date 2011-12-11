@@ -194,6 +194,16 @@ $lang['en_US']['EditableRadioField']['SINGULARNAME'] = array(
 	50,
 	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
 );
+$lang['en_US']['EditableRecipientsDropdownField']['PLURALNAME'] = array(
+	'Recipientes Dropdown Fields',
+	50,
+	'Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface'
+);
+$lang['en_US']['EditableRecipientsDropdownField']['SINGULARNAME'] = array(
+	'Recipientes Dropdown Field',
+	50,
+	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
+);
 $lang['en_US']['EditableTextField']['NUMBERROWS'] = 'Number of rows';
 $lang['en_US']['EditableTextField']['PLURALNAME'] = array(
 	'Text Fields',
@@ -265,6 +275,7 @@ $lang['en_US']['UserDefinedForm']['PLURALNAME'] = array(
 	'Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface'
 );
 $lang['en_US']['UserDefinedForm']['RECEIVED'] = 'Received Submissions';
+$lang['en_US']['UserDefinedForm']['RECIPIENTNAME'] = 'Recipient Name';
 $lang['en_US']['UserDefinedForm']['SAVESUBMISSIONS'] = 'Disable Saving Submissions to Server';
 $lang['en_US']['UserDefinedForm']['SENDEMAILTO'] = 'Send Email To';
 $lang['en_US']['UserDefinedForm']['SENDPLAIN'] = 'Send Email as Plain Text (HTML will be stripped)';
