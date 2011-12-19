@@ -25,7 +25,7 @@ class EditableRecipientsDropdownField extends EditableFormField {
                 }
             }
             $receipents = $receipents->toDropdownMap('ID', 'RecipientName');
-            return new DropdownField($this->Name, $this->Title, $receipents, '', null, _t('UserDefinedForm.SELECTRECIPIENTS', 'Select a recipient'));
+            return new DropdownField($this->Name, $this->Title, $receipents, '', null, _t('UserDefinedForm.SELECTRECIPIENTS', 'Wähle einen Empfänger'));
         }
         return false;
     }
